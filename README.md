@@ -22,7 +22,7 @@
 Plataforma interactiva, moderna y de alto rendimiento diseñada como interfaz web y laboratorio de pruebas para la habilidad **`emulsion-stability-assistant`** en **Ingeniería de Alimentos** y **Fisicoquímica de Coloides**.
 
 ---
-
+# Enlace a la página de la skill: https://luisitacard4-ai.github.io/Crema-cardioprotectora/
 ## 🎯 Caso de Uso Oficial Integrado
 
 La landing page viene preconfigurada para ejecutar, desglosar y simular la formulación oficial de prueba:
