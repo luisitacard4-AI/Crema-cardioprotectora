@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma de inteligencia artificial y física coloidal para formulación y evaluación de emulsiones alimentarias O/W y W/O. Basado en el skill emulsion-stability-assistant.">
+  <meta name="keywords" content="emulsion-stability-assistant, emulsiones alimentarias, coloides, crema untable chía, aislado de proteína de soya, goma xantana, cremado, floculación, Ley de Stokes, ingeniería de alimentos">
+  <meta name="author" content="Antigravity Colloid FoodTech">
+  <title>Emulsion Stability Assistant | IA y Fisicoquímica para Emulsiones Alimentarias</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- BARRA MÓVIL SUPERIOR -->
+  <header class="mobile-nav-bar">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="brand-badge" style="width: 34px; height: 34px;">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="9" cy="10" r="3" fill="#ffffff"/>
+          <circle cx="16" cy="14" r="2" fill="#ffffff"/>
+          <circle cx="13" cy="16" r="1.5" fill="#ffffff"/>
+        </svg>
+      </div>
+      <h3 style="font-size: 0.95rem;">EmulsiTech AI</h3>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Abrir Menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- MENÚ LATERAL IZQUIERDO (SIDEBAR) -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <div class="brand-badge">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="9" cy="10" r="3" fill="#ffffff"/>
+              <circle cx="16" cy="14" r="2" fill="#ffffff"/>
+              <circle cx="13" cy="16" r="1.5" fill="#ffffff"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h2>EmulsiTech AI</h2>
+            <span>Colloid Science Assistant</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#inicio" class="nav-link active">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Inicio</span>
+          </a>
+
+          <a href="#playground" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Asistente Skill IA</span>
+            <span class="nav-badge">v2.4</span>
+          </a>
+
+          <a href="#simulador" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+            <span>Laboratorio & Stokes</span>
+            <span class="nav-badge" style="background: rgba(14, 165, 233, 0.15); color: var(--accent-cyan);">Sim</span>
+          </a>
+
+          <a href="#mecanismos" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span>Mecanismos Físicos</span>
+          </a>
+
+          <a href="#casos" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            <span>Casos de Formulación</span>
+          </a>
+
+          <a href="#comparativa" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2"></line>
+              <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2"></line>
+              <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2"></line>
+            </svg>
+            <span>Comparativa R&D</span>
+          </a>
+
+          <a href="#faq" class="nav-link">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"></line>
+            </svg>
+            <span>Preguntas Frecuentes</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="skill-status-box">
+          <div class="skill-status-header">
+            <span class="status-dot"></span>
+            <span>emulsion-stability-assistant</span>
+          </div>
+          <div style="font-size: 0.73rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+            Motor Coloidal: ONLINE<br>
+            DLVO + Stokes + Carreau
+          </div>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle-btn" aria-label="Cambiar tema">
+          <span id="current-theme-name">Modo Oscuro</span>
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ÁREA DE CONTENIDO PRINCIPAL -->
+    <main class="main-wrapper">
+      <div class="content-container">
+
+        <!-- ===================================================================
+             SECCIÓN HERO: PRESENTACIÓN DEL SKILL & CONSULTA OFICIAL
+             =================================================================== -->
+        <section id="inicio" class="hero-section">
+          <div class="hero-grid">
+            <div class="hero-text-col">
+              <div class="hero-badge-wrap">
+                <span class="badge-skill-active">
+                  <span class="status-dot"></span>
+                  skill: emulsion-stability-assistant
+                </span>
+                <span class="section-tag" style="margin-bottom: 0;">Ingeniería de Alimentos 4.0</span>
+              </div>
+
+              <h1 class="hero-title">
+                Predicción y Formulación Inteligente de <span class="gradient-text">Emulsiones Alimentarias</span>
+              </h1>
+
+              <p class="hero-description">
+                Evalúa en tiempo real riesgos de cremado, floculación por puente o depleción y coalescencia interfacial. Diseñado para formuladores, científicos de alimentos y plantas agroindustriales con rigor fisicoquímico, leyes de Stokes y electrocinética DLVO.
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="#playground" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/></svg>
+                  Probar Asistente IA
+                </a>
+                <a href="#simulador" class="btn btn-secondary">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2"/></svg>
+                  Simulador de Microscopía
+                </a>
+              </div>
+
+              <div class="hero-stats-row">
+                <div class="stat-item">
+                  <h4>&lt; 0.85 µm</h4>
+                  <p>Tamaño d32 con homogeneización a 20+ MPa</p>
+                </div>
+                <div class="stat-item">
+                  <h4>+300%</h4>
+                  <p>Estabilidad cinética frente a separación de fases</p>
+                </div>
+                <div class="stat-item">
+                  <h4>0%</h4>
+                  <p>Sinéresis visual con balance de hidrocoloides</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TARJETA INTERACTIVA DE CONSULTA PROMPT (HIGHLIGHT OFICIAL) -->
+            <div class="hero-prompt-card">
+              <div class="prompt-card-header">
+                <div class="prompt-card-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  <span>Consulta de Prueba del Skill</span>
+                </div>
+                <span class="nav-badge">Ejemplo Listo</span>
+              </div>
+
+              <div class="prompt-featured-quote" id="hero-prompt-quote">
+                "Quiero evaluar una emulsión O/W para crema untable con 25% de aceite de chía, 3% de aislado de proteína de soya y 0.2% de goma xantana a pH 6.2 y homogeneizada a 20 MPa. ¿Cuál es el riesgo de cremado o floculación y qué ajustes me recomiendas?"
+              </div>
+
+              <div class="prompt-meta-chips">
+                <span class="meta-chip highlight">25% Aceite de Chía</span>
+                <span class="meta-chip highlight">3% Prot. Soya (SPI)</span>
+                <span class="meta-chip highlight">0.2% Goma Xantana</span>
+                <span class="meta-chip">pH 6.2 (pI 4.5)</span>
+                <span class="meta-chip">20 MPa (200 bar)</span>
+              </div>
+
+              <div class="prompt-card-actions">
+                <button class="btn btn-emerald btn-sm" id="btn-hero-run-prompt" style="flex: 1;">
+                  <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Ejecutar en Asistente IA
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-hero-copy-prompt" title="Copiar consulta">
+                  <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  Copiar
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN ASISTENTE SKILL PLAYGROUND (CONSOLA INTERACTIVA)
+             =================================================================== -->
+        <section id="playground" class="playground-section">
+          <div class="section-header">
+            <span class="section-tag">Entorno de Ejecución en Vivo</span>
+            <h2 class="section-title">Consola del Asistente de Estabilidad</h2>
+            <p class="section-subtitle">
+              Interactúa directamente con el motor inteligente de <code>emulsion-stability-assistant</code>. Selecciona una formulación preconfigurada o redacta tu propia consulta técnica.
+            </p>
+          </div>
+
+          <div class="console-wrapper">
+            <div class="console-header">
+              <div class="console-title-group">
+                <div class="terminal-dots">
+                  <span class="terminal-dot" style="background: #ef4444;"></span>
+                  <span class="terminal-dot" style="background: #f59e0b;"></span>
+                  <span class="terminal-dot" style="background: #10b981;"></span>
+                </div>
+                <span class="console-title">assistant://emulsion-stability-assistant/cli</span>
+              </div>
+              <span class="nav-badge" style="background: rgba(14, 165, 233, 0.15); color: var(--accent-cyan);">NLP Colloid Parser</span>
+            </div>
+
+            <!-- CHIPS DE CONSULTA RÁPIDA -->
+            <div class="chat-quick-chips">
+              <button class="chip-btn" data-query="official_chia">
+                ✨ Crema untable Chía & Soya (Prompt Oficial)
+              </button>
+              <button class="chip-btn" data-query="plant_drink">
+                🥛 Bebida Vegetal de Arveja & Girasol
+              </button>
+              <button class="chip-btn" data-query="acid_dressing">
+                🥗 Aderezo Ácido con Caseinato (pH 4.4)
+              </button>
+              <button class="chip-btn" data-query="nano_mct">
+                💊 Nanoemulsión de Aceite MCT a 80 MPa
+              </button>
+            </div>
+
+            <div class="console-body" id="chat-body">
+              <!-- Mensajes dinámicos generados por game.js -->
+            </div>
+
+            <div class="console-input-bar">
+              <input 
+                type="text" 
+                id="chat-input" 
+                class="console-input" 
+                placeholder="Ej: Quiero evaluar una emulsión O/W con 20% aceite de girasol, 2% WPI, 0.15% xantana a pH 6.5 y 25 MPa..."
+              >
+              <button class="btn btn-primary" id="btn-chat-send">
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Evaluar
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN SIMULADOR Y LABORATORIO INTERACTIVO (STOKES & REOLOGÍA)
+             =================================================================== -->
+        <section id="simulador" class="simulator-section">
+          <div class="section-header">
+            <span class="section-tag">Motor Reológico & Electrocinético</span>
+            <h2 class="section-title">Laboratorio Interactivo de Estabilidad Coloidal</h2>
+            <p class="section-subtitle">
+              Simula el comportamiento físico de gotas en suspensión bajo diferentes presiones de homogeneización, dosificaciones de hidrocoloide y pH relativo al punto isoeléctrico (pI).
+            </p>
+          </div>
+
+          <div class="sim-container">
+            <!-- PANEL IZQUIERDO: CONTROLES DE FORMULACIÓN -->
+            <div class="sim-panel">
+              <div class="sim-panel-header">
+                <div class="sim-panel-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  <h3 style="font-size: 1.15rem;">Parámetros de Formulación</h3>
+                </div>
+                <span class="nav-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">Interactivo</span>
+              </div>
+
+              <!-- PRESETS RÁPIDOS -->
+              <div class="presets-grid">
+                <button class="btn-preset active" data-preset="chia_spread">
+                  <strong>Crema Chía & Soya (Oficial)</strong>
+                  <span>25% Chía · 3% SPI · 0.2% Xant · 20 MPa</span>
+                </button>
+                <button class="btn-preset" data-preset="plant_milk">
+                  <strong>Bebida Vegetal</strong>
+                  <span>8% Girasol · 1.8% Arveja · 35 MPa</span>
+                </button>
+                <button class="btn-preset" data-preset="acid_dressing">
+                  <strong>Aderezo Ácido (pI)</strong>
+                  <span>18% Oliva · 2.2% Caseinato · pH 4.4</span>
+                </button>
+                <button class="btn-preset" data-preset="mayo_light">
+                  <strong>Mayonesa Light O/W</strong>
+                  <span>45% Girasol · 3.5% Lecitina · 12 MPa</span>
+                </button>
+              </div>
+
+              <!-- CONTROL: FASE OLEOSA -->
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-oil-type">Tipo de Aceite / Fase Dispersa</label>
+                </div>
+                <select id="lab-oil-type" class="form-select">
+                  <option value="chia">Aceite de Chía (925 kg/m³ - Rico en Omega-3 ALA)</option>
+                  <option value="olive">Aceite de Oliva Extra Virgen (915 kg/m³)</option>
+                  <option value="sunflower">Aceite de Girasol Alto Oleico (920 kg/m³)</option>
+                  <option value="palm">Oleína de Palma (910 kg/m³)</option>
+                  <option value="avocado">Aceite de Aguacate (918 kg/m³)</option>
+                  <option value="mct">Triglicéridos Cadena Media MCT (945 kg/m³)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-oil-fraction">Fracción de Aceite (Φ)</label>
+                  <span class="control-val-badge" id="val-oil-fraction">25%</span>
+                </div>
+                <input type="range" id="lab-oil-fraction" class="slider-input" min="5" max="75" step="1" value="25">
+                <div class="slider-ticks">
+                  <span>5% (Bebida)</span>
+                  <span>25% (Untable)</span>
+                  <span>75% (Mayonesa densa)</span>
+                </div>
+              </div>
+
+              <!-- CONTROL: EMULSIFICANTE -->
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-emul-type">Emulsificante Principal</label>
+                </div>
+                <select id="lab-emul-type" class="form-select">
+                  <option value="spi">Aislado de Proteína de Soya - SPI (pI ~ 4.5)</option>
+                  <option value="wpi">Aislado de Proteína de Suero - WPI (pI ~ 5.1)</option>
+                  <option value="caseinate">Caseinato de Sodio (pI ~ 4.6)</option>
+                  <option value="pea">Aislado de Proteína de Arveja (pI ~ 4.8)</option>
+                  <option value="lecithin">Lecitina de Soya Fosfolípidos (pI ~ 3.5)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-emul-dose">Concentración de Emulsificante</label>
+                  <span class="control-val-badge" id="val-emul-dose">3.0%</span>
+                </div>
+                <input type="range" id="lab-emul-dose" class="slider-input" min="0.5" max="8.0" step="0.1" value="3.0">
+                <div class="slider-ticks">
+                  <span>0.5% (Mínimo)</span>
+                  <span>3.0% (Saturación)</span>
+                  <span>8.0% (Alto)</span>
+                </div>
+              </div>
+
+              <!-- CONTROL: HIDROCOLOIDE -->
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-hydro-type">Estabilizante / Hidrocoloide</label>
+                </div>
+                <select id="lab-hydro-type" class="form-select">
+                  <option value="xanthan">Goma Xantana (Esfuerzo de fluencia & pseudoplástico)</option>
+                  <option value="guar">Goma Guar (Galactomanano no iónico)</option>
+                  <option value="cmc">Carboximetilcelulosa CMC (Aniónico)</option>
+                  <option value="starch">Almidón Modificado Reticulado</option>
+                  <option value="none">Sin Hidrocoloide (Fase acuosa newtoniana)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-hydro-dose">Dosis de Hidrocoloide</label>
+                  <span class="control-val-badge" id="val-hydro-dose">0.20%</span>
+                </div>
+                <input type="range" id="lab-hydro-dose" class="slider-input" min="0.0" max="1.0" step="0.02" value="0.20">
+                <div class="slider-ticks">
+                  <span>0.0%</span>
+                  <span>0.20% (Óptimo)</span>
+                  <span>1.0% (Riesgo Depleción)</span>
+                </div>
+              </div>
+
+              <!-- CONTROL: pH Y PRESIÓN -->
+              <div class="control-group">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-ph">pH de la Fase Continua</label>
+                  <span class="control-val-badge" id="val-ph">6.2</span>
+                </div>
+                <input type="range" id="lab-ph" class="slider-input" min="2.5" max="8.5" step="0.1" value="6.2">
+                <div class="slider-ticks">
+                  <span>2.5 (Muy ácido)</span>
+                  <span>4.5 (Zona pI Proteínas)</span>
+                  <span>8.5 (Básico)</span>
+                </div>
+              </div>
+
+              <div class="control-group" style="margin-bottom: 0;">
+                <div class="control-label-wrap">
+                  <label class="control-label" for="lab-pressure">Presión de Homogeneización</label>
+                  <span class="control-val-badge" id="val-pressure">20 MPa</span>
+                </div>
+                <input type="range" id="lab-pressure" class="slider-input" min="5" max="100" step="5" value="20">
+                <div class="slider-ticks">
+                  <span>5 MPa (50 bar)</span>
+                  <span>20 MPa (200 bar)</span>
+                  <span>100 MPa (Microfluidización)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANEL DERECHO: VISUALIZADOR DE GOTAS Y TELEMETRÍA -->
+            <div class="sim-panel">
+              <div class="sim-panel-header">
+                <div class="sim-panel-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+                  <h3 style="font-size: 1.15rem;">Microscopio Óptico & Telemetría</h3>
+                </div>
+                <span class="nav-badge" style="background: rgba(14, 165, 233, 0.15); color: var(--accent-cyan);">2D Dynamic</span>
+              </div>
+
+              <!-- CANVAS MICROSCOPIO -->
+              <div class="microscope-container">
+                <div class="microscope-header">
+                  <div class="microscope-title">
+                    <span class="status-dot"></span>
+                    <span>CLSM 40x / Microestructura de Gotas O/W</span>
+                  </div>
+                  <div class="microscope-controls">
+                    <button class="btn-canvas-ctrl" id="btn-canvas-pause">⏸ Pausar</button>
+                    <button class="btn-canvas-ctrl" id="btn-canvas-centri">🌀 Centrifugar (1000g)</button>
+                    <button class="btn-canvas-ctrl" id="btn-canvas-reset">🔄 Reset</button>
+                  </div>
+                </div>
+
+                <canvas id="droplet-canvas" height="280"></canvas>
+
+                <div class="microscope-legend">
+                  <div class="legend-item">
+                    <span class="legend-dot" style="background: #f59e0b;"></span>
+                    <span>Fase Lipídica (Gotas)</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-dot" style="background: #0ea5e9;"></span>
+                    <span>Film Proteico</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-dot" style="background: #f43f5e;"></span>
+                    <span>Enlaces de Floculación</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CUADRÍCULA DE MÉTRICAS -->
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-card-top">
+                    <span class="metric-name">Diámetro Sauter (d32)</span>
+                    <span class="metric-badge badge-safe" id="badge-d32">Submicrón</span>
+                  </div>
+                  <div class="metric-value">
+                    <span id="metric-d32">0.82</span>
+                    <span class="metric-unit">µm</span>
+                  </div>
+                  <div class="metric-desc">Dispersión según correlación Kolmogorov-Hinze</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-card-top">
+                    <span class="metric-name">Potencial Zeta (ζ)</span>
+                    <span class="metric-badge badge-safe" id="badge-zeta">Repulsión Fuerte</span>
+                  </div>
+                  <div class="metric-value">
+                    <span id="metric-zeta">-32.4</span>
+                    <span class="metric-unit">mV</span>
+                  </div>
+                  <div class="metric-desc">Carga neta superficial DLVO respecto al pI</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-card-top">
+                    <span class="metric-name">Viscosidad Continua (ηc)</span>
+                    <span class="metric-badge badge-safe">Bajo Cizalle</span>
+                  </div>
+                  <div class="metric-value">
+                    <span id="metric-viscosity">450</span>
+                    <span class="metric-unit">mPa·s</span>
+                  </div>
+                  <div class="metric-desc">Meseta cero de cizallamiento con hidrocoloide</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-card-top">
+                    <span class="metric-name">Velocidad Stokes (vs)</span>
+                    <span class="metric-badge badge-safe" id="badge-stokes">Estable</span>
+                  </div>
+                  <div class="metric-value">
+                    <span id="metric-stokes">&lt; 0.01</span>
+                    <span class="metric-unit">mm/día</span>
+                  </div>
+                  <div class="metric-desc">Tasa de migración gravitacional neta</div>
+                </div>
+              </div>
+
+              <!-- MATRIZ DE RIESGO DE INESTABILIDAD -->
+              <div class="risk-matrix-box">
+                <div class="risk-matrix-title">
+                  <span>Matriz de Riesgo Cinético</span>
+                  <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">Predicción a 90 días</span>
+                </div>
+                <div class="risk-bar-group">
+                  <div class="risk-bar-item">
+                    <div class="risk-bar-labels">
+                      <span>Riesgo de Cremado Gravitacional</span>
+                      <strong id="risk-creaming-val">8%</strong>
+                    </div>
+                    <div class="risk-bar-track">
+                      <div class="risk-bar-fill" id="risk-creaming-fill" style="width: 8%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="risk-bar-item">
+                    <div class="risk-bar-labels">
+                      <span>Riesgo de Floculación (Depleción / Isoeléctrica)</span>
+                      <strong id="risk-floc-val">12%</strong>
+                    </div>
+                    <div class="risk-bar-track">
+                      <div class="risk-bar-fill" id="risk-floc-fill" style="width: 12%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="risk-bar-item">
+                    <div class="risk-bar-labels">
+                      <span>Riesgo de Coalescencia Interfacial</span>
+                      <strong id="risk-coal-val">10%</strong>
+                    </div>
+                    <div class="risk-bar-track">
+                      <div class="risk-bar-fill" id="risk-coal-fill" style="width: 10%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DIAGNÓSTICO EN TIEMPO REAL -->
+              <div class="ai-diagnosis-banner">
+                <div class="ai-diag-header">
+                  <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: var(--accent-cyan);"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/></svg>
+                  <h4 id="ai-diag-title">Índice de Estabilidad Coloidal: 92/100</h4>
+                </div>
+                <div class="ai-diag-content">
+                  <p id="ai-diag-summary">
+                    Formulación altamente robusta. El sistema coloidal O/W presenta un diámetro de gota submicrónico y una red viscoelástica que confina cinéticamente las microgotas de aceite de chía.
+                  </p>
+                  <ul class="ai-diag-list" id="ai-diag-recs">
+                    <!-- Elementos recomendados inyectados por calculator.js -->
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN MECANISMOS FÍSICOS DE DESESTABILIZACIÓN
+             =================================================================== -->
+        <section id="mecanismos" class="mechanisms-section">
+          <div class="section-header">
+            <span class="section-tag">Fundamentos Fisicoquímicos</span>
+            <h2 class="section-title">Los 4 Mecanismos de Desestabilización</h2>
+            <p class="section-subtitle">
+              Cómo el asistente <code>emulsion-stability-assistant</code> modela matemáticamente los fenómenos coloidales descritos por McClements, Dickinson y la teoría DLVO.
+            </p>
+          </div>
+
+          <div class="mech-grid">
+            <!-- 1. CREMADO Y SEDIMENTACIÓN -->
+            <div class="mech-card">
+              <div class="mech-icon-banner" style="background: rgba(14, 165, 233, 0.12); color: var(--accent-cyan);">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5" stroke="currentColor" stroke-width="2"/><polyline points="5 12 12 5 19 12" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <span class="mech-badge" style="color: var(--accent-cyan);">Separación Gravitacional</span>
+              <h3 class="mech-title">Cremado y Sedimentación</h3>
+              <p class="mech-desc">
+                Migración vertical de las gotas impulsada por la diferencia de densidad ($\Delta\rho$) entre la fase oleosa ($\approx 915-925\ kg/m^3$) y la fase acuosa continua ($\approx 1000\ kg/m^3$). Se frena drásticamente disminuyendo el diámetro de gota ($d^2$) o generando un esfuerzo de fluencia ($\tau_0$) mediante polisacáridos.
+              </p>
+              <div class="mech-formula-box">
+                <span>Ley de Stokes:</span>
+                <code>v = 2 r² (ρc - ρd) g / (9 ηc)</code>
+              </div>
+              <div class="mech-mitigation-tag">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Mitigación: Reducir d32 con homogeneización & añadir red de goma xantana.</span>
+              </div>
+            </div>
+
+            <!-- 2. FLOCULACIÓN -->
+            <div class="mech-card">
+              <div class="mech-icon-banner" style="background: rgba(245, 158, 11, 0.12); color: var(--accent-amber);">
+                <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="4" fill="currentColor"/><circle cx="16" cy="9" r="3.5" fill="currentColor"/><circle cx="12" cy="16" r="3" fill="currentColor"/></svg>
+              </div>
+              <span class="mech-badge" style="color: var(--accent-amber);">Agregación Reversible</span>
+              <h3 class="mech-title">Floculación por Puenteo y Depleción</h3>
+              <p class="mech-desc">
+                Unión de gotas sin ruptura interfacial. Ocurre por: <strong>1) Depleción:</strong> cuando el exceso de polímero no adsorbido genera una presión osmótica atractiva que empuja las gotas entre sí. <strong>2) Carga Isoeléctrica:</strong> cuando el pH se aproxima al punto isoeléctrico de las proteínas ($|\zeta| < 15\ mV$), suprimiendo la repulsión electrostática.
+              </p>
+              <div class="mech-formula-box">
+                <span>Potencial DLVO:</span>
+                <code>VT = V_van_der_Waals + V_electrostático</code>
+              </div>
+              <div class="mech-mitigation-tag">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Mitigación: Mantener pH lejos del pI y no exceder dosis crítica C* de hidrocoloides.</span>
+              </div>
+            </div>
+
+            <!-- 3. COALESCENCIA -->
+            <div class="mech-card">
+              <div class="mech-icon-banner" style="background: rgba(244, 63, 94, 0.12); color: var(--accent-rose);">
+                <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/></svg>
+              </div>
+              <span class="mech-badge" style="color: var(--accent-rose);">Fusión Irreversible</span>
+              <h3 class="mech-title">Coalescencia y Rotura Interfacial</h3>
+              <p class="mech-desc">
+                Fusión irreversible de dos o más gotas en una gota mayor, culminando en la separación completa en dos fases líquidas continuas (aceite libre visible). Es provocada por deficiencia de emulsificante ($\Gamma < \Gamma_{sat}$) o baja elasticidad dilatacional del film interfacial viscoelástico.
+              </p>
+              <div class="mech-formula-box">
+                <span>Cobertura Interfacial:</span>
+                <code>Γ = C_proteína / (6 Φ / d32) ≥ Γ_sat</code>
+              </div>
+              <div class="mech-mitigation-tag">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Mitigación: Dosis suficiente de proteína para saturar el área interfacial generada.</span>
+              </div>
+            </div>
+
+            <!-- 4. MADURACIÓN DE OSTWALD -->
+            <div class="mech-card">
+              <div class="mech-icon-banner" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald);">
+                <svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="12" r="2.5" fill="currentColor"/></svg>
+              </div>
+              <span class="mech-badge" style="color: var(--accent-emerald);">Difusión Molecular</span>
+              <h3 class="mech-title">Maduración de Ostwald</h3>
+              <p class="mech-desc">
+                Crecimiento progresivo de gotas grandes a expensas de las pequeñas debido a la mayor presión de Laplace en gotas diminutas, lo que crea un gradiente de solubilidad química a través de la fase continua. Es especialmente crítico en fases lipídicas con solubilidad parcial en agua (ej. aceites esenciales, MCT o aromas).
+              </p>
+              <div class="mech-formula-box">
+                <span>Presión de Laplace:</span>
+                <code>ΔP = 2γ / r   (r_pequeña &lt; r_grande)</code>
+              </div>
+              <div class="mech-mitigation-tag">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Mitigación: Incorporar lípido hidrófobo insoluble (bloqueador de maduración) o estrechar polidispersidad.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN CASOS DE ESTUDIO Y APLICACIÓN REAL
+             =================================================================== -->
+        <section id="casos" class="cases-section">
+          <div class="section-header">
+            <span class="section-tag">Casos de Éxito en R&D</span>
+            <h2 class="section-title">Formulaciones Optimizadas por el Asistente</h2>
+            <p class="section-subtitle">
+              Resultados de laboratorio y planta piloto validados con microscopía láser confocal, analizadores de dispersión estática de luz y reología oscilatoria.
+            </p>
+          </div>
+
+          <div class="cases-grid">
+            <!-- CASO 1: CREMA UNTABLE DE CHÍA (PROMPT OFICIAL) -->
+            <div class="case-card">
+              <div class="case-img-wrap">
+                <img src="assets/images/emulsion-spread-chia.jpg" alt="Crema Untable de Aceite de Chía Emulsionada" loading="lazy">
+                <span class="case-category-tag">Plant-Based Spread</span>
+              </div>
+              <div class="case-content">
+                <h3 class="case-title">Crema Untable de Chía & Soya (Omega-3)</h3>
+                <p class="case-desc">
+                  El caso planteado en la consulta oficial del skill: emulsión O/W con 25% de aceite de chía, 3% aislado de soya (SPI) y 0.2% xantana a pH 6.2 homogeneizada a 20 MPa. Ausencia total de cremado a 90 días con protección oxidativa integral.
+                </p>
+                <div class="case-stats-box">
+                  <div class="case-stat-item">
+                    <span>Vida Útil Estimada</span>
+                    <strong>120 Días (20°C)</strong>
+                  </div>
+                  <div class="case-stat-item">
+                    <span>Sinéresis / Suero</span>
+                    <strong>0.0% Medido</strong>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="EmulsionAssistant.syncWithSimulator(25, 'chia', 3.0, 'spi', 0.20, 'xanthan', 6.2, 20)">
+                  Cargar en Simulador
+                </button>
+              </div>
+            </div>
+
+            <!-- CASO 2: LABORATORIO Y HOMOGENEIZACIÓN INDUSTRIAL -->
+            <div class="case-card">
+              <div class="case-img-wrap">
+                <img src="assets/images/emulsion-lab.jpg" alt="Laboratorio de Formulación de Coloides y Homogeneizador APV" loading="lazy">
+                <span class="case-category-tag">Planta Piloto 4.0</span>
+              </div>
+              <div class="case-content">
+                <h3 class="case-title">Escalamiento en Homogeneizador de Alta Presión</h3>
+                <p class="case-desc">
+                  Optimización de etapas mecánicas (25 MPa en primera etapa / 5 MPa en segunda etapa desaglomerante). Reducción del polidispersity index (PDI) a menos de 0.18 y minimización del consumo energético por lote.
+                </p>
+                <div class="case-stats-box">
+                  <div class="case-stat-item">
+                    <span>d32 Sauter</span>
+                    <strong>0.78 µm</strong>
+                  </div>
+                  <div class="case-stat-item">
+                    <span>Potencial Zeta</span>
+                    <strong>-34.2 mV</strong>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="EmulsionAssistant.syncWithSimulator(15, 'sunflower', 2.5, 'wpi', 0.15, 'xanthan', 6.8, 30)">
+                  Cargar en Simulador
+                </button>
+              </div>
+            </div>
+
+            <!-- CASO 3: MICROSCOPÍA CONFOCAL CLSM -->
+            <div class="case-card">
+              <div class="case-img-wrap">
+                <img src="assets/images/emulsion-microscopy.jpg" alt="Microscopía Confocal de Barrido Láser CLSM de Gotas de Emulsión" loading="lazy">
+                <span class="case-category-tag">Biofísica de Interfases</span>
+              </div>
+              <div class="case-content">
+                <h3 class="case-title">Caracterización Estructural por CLSM</h3>
+                <p class="case-desc">
+                  Visualización con tinción fluorescente diferencial de la fase lipídica interna (verde Nile Red) y la corteza interfacial de biopolímero proteico (azul Calcofluor / FITC). Comprobación de integridad de membrana.
+                </p>
+                <div class="case-stats-box">
+                  <div class="case-stat-item">
+                    <span>Espesor Membrana</span>
+                    <strong>12 - 18 nm</strong>
+                  </div>
+                  <div class="case-stat-item">
+                    <span>Floculación Libre</span>
+                    <strong>99.4% Gotas aisladas</strong>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline" onclick="EmulsionAssistant.syncWithSimulator(10, 'mct', 3.5, 'caseinate', 0.0, 'none', 7.0, 50)">
+                  Cargar en Simulador
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN COMPARATIVA R&D: TRADICIONAL VS ASISTENTE IA
+             =================================================================== -->
+        <section id="comparativa" class="comparison-section">
+          <div class="section-header">
+            <span class="section-tag">Eficiencia en Desarrollo</span>
+            <h2 class="section-title">Método Tradicional vs. Emulsion Assistant</h2>
+            <p class="section-subtitle">
+              Cómo la simulación predictiva con <code>emulsion-stability-assistant</code> transforma meses de formulación por ensayo y error en decisiones fisicoquímicas inmediatas.
+            </p>
+          </div>
+
+          <div class="comparison-table-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Parámetro de Desarrollo</th>
+                  <th>Formulación Tradicional (Ensayo & Error)</th>
+                  <th>Con emulsion-stability-assistant</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tiempo de Diagnóstico de Riesgo</strong></td>
+                  <td>30 a 90 días en cámaras de estabilidad a 20°C/40°C</td>
+                  <td><strong>Inmediato (&lt; 2 segundos)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Prevención de Floculación por Depleción</strong></td>
+                  <td>Frecuente sobredosificación de hidrocoloides por miedo al cremado</td>
+                  <td><strong>Cálculo exacto del umbral crítico C*</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Selección de pH vs Punto Isoeléctrico</strong></td>
+                  <td>Ignorado hasta que se produce precipitación en lote piloto</td>
+                  <td><strong>Cálculo electrocinético de potencial zeta y DLVO</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Gasto en Lotes de Prueba & Materia Prima</strong></td>
+                  <td>15 - 30 ensayos de planta con mermas de 50-100 kg cada uno</td>
+                  <td><strong>2 - 3 corridas de validación confirmatoria</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Optimización de Presión de Homogeneizador</strong></td>
+                  <td>Ajuste empírico (suele operar a máxima presión innecesariamente)</td>
+                  <td><strong>Curva de potencia d32 vs energía mecánica</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SECCIÓN PREGUNTAS FRECUENTES (FAQ)
+             =================================================================== -->
+        <section id="faq" class="faq-section">
+          <div class="section-header">
+            <span class="section-tag">Base de Conocimiento</span>
+            <h2 class="section-title">Preguntas Frecuentes de Científicos de Alimentos</h2>
+            <p class="section-subtitle">
+              Respuestas a las dudas más comunes sobre físico-química coloidal, reología y uso del skill.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item active">
+              <div class="faq-question">
+                <span>¿Por qué el pH 6.2 es seguro para el aislado de soya (SPI), pero a pH 4.5 colapsa la emulsión?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer">
+                El punto isoeléctrico (pI) de las principales globulinas del aislado de soya (glicinina 11S y β-conglicinina 7S) se sitúa entre 4.5 y 4.8. A este pH, la carga eléctrica superficial neta de la proteína es cero, anulando la fuerza de repulsión electrostática ($V_R \approx 0$). Las fuerzas atractivas de van der Waals provocan agregación y precipitación masiva de las gotas. A pH 6.2, las proteínas poseen carga negativa neta sustancial ($\zeta \approx -30\text{ a }-35\text{ mV}$), garantizando una barrera electrostática muy estable.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>¿Qué es la floculación por depleción y por qué ocurre con exceso de goma xantana?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer">
+                La goma xantana es un polisacárido aniónico de alto peso molecular que no se adsorbe activamente en la interfase gota-aceite (la interfase ya está ocupada por la proteína). Cuando la concentración de xantana en la fase continua supera un límite crítico ($C^* \approx 0.25-0.30\%$), las moléculas de polímero son excluidas del estrecho espacio entre dos gotas adyacentes. Esta zona de exclusión genera una presión osmótica atractiva que succiona agua hacia el exterior, obligando a las gotas a juntarse y flocular. Por tanto, dosificar 0.20% es óptimo para frenar el cremado sin desencadenar depleción.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>¿Cómo influye la presión de 20 MPa en la vida útil de una crema untable?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer">
+                La ley de Stokes establece que la velocidad de cremado es proporcional al cuadrado del radio de la gota ($v \propto r^2$). Al aplicar 20 MPa (200 bar), las gotas de aceite de chía se fracturan hasta un diámetro medio de Sauter $d_{32} < 1.0\ \mu m$. En comparación con una mezcla sin homogeneizar de alta presión ($d \approx 10\ \mu m$), la velocidad de cremado se reduce en un factor de 100x ($10^2 = 100$), pasando de horas a meses de estabilidad.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>¿Cómo puedo exportar el dictamen generado para un dossier técnico o HACCP?</span>
+                <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer">
+                Dentro de la consola del asistente en vivo o en el laboratorio, haz clic en el botón "Generar Ficha Técnica". Se abrirá un modal con el desglose estandarizado de formulación, parámetros reológicos, cálculo de vida útil y dictamen cinético listo para impresión o exportación a PDF para auditar según normas ISO 22000 o HACCP.
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="content-container" style="padding-top: 0; padding-bottom: 0;">
+          <div class="footer-content">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem;">
+                <div class="brand-badge" style="width: 28px; height: 28px;">
+                  <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="9" cy="10" r="3" fill="#ffffff"/></svg>
+                </div>
+                <h4 style="font-size: 1.05rem;">EmulsiTech AI™</h4>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); max-width: 520px;">
+                Desarrollado para el skill <code>emulsion-stability-assistant</code> en Antigravity. Modelado predictivo de coloides, física de superficies e ingeniería de alimentos 4.0.
+              </p>
+            </div>
+
+            <div class="footer-citations">
+              <strong>Referencias Científicas Integradas:</strong><br>
+              • D.J. McClements, <em>Food Emulsions: Principles, Practices, and Techniques</em> (CRC Press)<br>
+              • E. Dickinson, <em>Hydrocolloids at interfaces and the influence on green emulsion stability</em><br>
+              • P. Walstra, <em>Physical Chemistry of Foods</em> (Marcel Dekker)
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- MODAL DE FICHA TÉCNICA -->
+  <div class="modal-backdrop" id="dossier-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h4 style="font-size: 1.15rem; color: var(--text-primary);">Ficha Técnica de Estabilidad</h4>
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      </div>
+      <div id="modal-dossier-content">
+        <!-- Rellenado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN -->
+  <div class="toast-notice" id="toast-notice">
+    ✓ Acción realizada
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calculator.js"></script>
+  <script src="assets/js/game.js"></script>
+</body>
+</html>
